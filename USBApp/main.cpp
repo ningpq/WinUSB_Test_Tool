@@ -20,7 +20,7 @@ ULONG TestUSBSpeedWithHeader(UCHAR pipeID, ULONG DataSize, PVOID pBuf)//bytes/s
     {
         DataSize = 10 * 1024 * 1024;
         pBuf = malloc(DataSize);
-        RtlCopyMemory(pBuf, "smifalconsta", 12);
+        RtlCopyMemory(pBuf, "usbteststart", 12);
         bNeedFree = TRUE;
     }
     LARGE_INTEGER T1, T2, F;
@@ -68,13 +68,13 @@ void  __cdecl ReadEPThread(LPVOID para)
         if (!r)
         {
             printf("Continue Read EP error\n");
-            OutputDebugString("SMI:*****Continue Read EP error\n");
+            OutputDebugString("*****Continue Read EP error\n");
             Sleep(100);
         }
         else
         {
             printf("Continue Read EP Success\n");
-            OutputDebugString("SMI:Continue Read EP Success");
+            OutputDebugString("Continue Read EP Success");
         }
     }
 }
@@ -124,20 +124,20 @@ ULONG TestUSBSpeed(UCHAR pipeID,ULONG DataSize,PVOID pBuf)//bytes/s
             {
                 speed = DataSize / Time / 1024;
                 printf("Write EP: %d,Data Size is:%d, Speed: %d\n", pipeID, DataSize,speed);
-                sprintf_s(pOutString, "SMI:Write EP: %d,Data Size is:%d, Speed: %d\n", pipeID, DataSize, speed);
+                sprintf_s(pOutString, "Write EP: %d,Data Size is:%d, Speed: %d\n", pipeID, DataSize, speed);
                 OutputDebugString(pOutString);
             }
             else
             {
                 printf("Write EP: %d,Data Size is:%d, Speed is too fast\n", pipeID);
-                sprintf_s(pOutString, "SMI:Write EP: %d,Data Size is:%d, Speed is too fast\n", pipeID);
+                sprintf_s(pOutString, "Write EP: %d,Data Size is:%d, Speed is too fast\n", pipeID);
                 OutputDebugString(pOutString);
             }
         }
         else
         {
             printf("Write EP: %d, Fail!!!!\n", pipeID);
-            sprintf_s(pOutString, "SMI:Write EP: %d, Fail!!!!\n", pipeID);
+            sprintf_s(pOutString, "Write EP: %d, Fail!!!!\n", pipeID);
             OutputDebugString(pOutString);
             return 1;
         }
@@ -995,3 +995,4 @@ Routine description:
     return 0;
 
 }
+
