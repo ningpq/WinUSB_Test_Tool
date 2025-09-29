@@ -1,44 +1,45 @@
-# test-1
-This is my first open source project
+# USBApp
 
-<div align="center">  
-  <img  src="https://github-readme-streak-stats.herokuapp.com?user=ningpq&theme=onedark&date_format=M%20j%5B%2C%20Y%5D" />
-  
-  ![ningpq's GitHub stats](https://github-readme-stats.vercel.app/api?username=ningpq&show_icons=true)
-  
-  <img src="https://img.shields.io/badge/gitHub-%E8%AE%A9%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D%E5%8F%98%E5%BE%97%E6%9B%B4%E5%A5%BD-brightgreen" />
-</div>
+USBApp 是一个基于 WinUSB 的 Windows 控制台应用程序，用于与 USB 设备进行通信和测试。项目包含设备发现、管道读写、等时传输等功能，适合 USB 驱动开发和设备调试。
 
-## c Block
-```c
-int i = 0;
-i++
-```
-## C++ Block
-``` c++
-BOOL bRet = TRUE;
-```
+## 项目结构
 
-## Edit
-*斜体*
-_斜体_
+- `device.cpp` / `device.h`  
+  设备发现与 WinUSB 初始化相关代码，定义设备接口 GUID。
+- `main.cpp`  
+  控制台主程序，演示如何通过 WinUSB 与 USB 设备通信，包括 Bulk、Interrupt、Isochronous 管道的读写测试。
+- `pch.h`  
+  预编译头文件。
+- `ReadMe.txt`  
+  项目说明和 WinUSB 相关资料链接。
+- `USBApp.vcxproj`  
+  Visual Studio 项目文件。
+- 其他：编译输出、日志、配置文件等。
 
-**粗体**
-__粗体__
+## 主要功能
 
-***斜粗体***
-___斜粗体___
+- 自动发现并连接 WinUSB 设备
+- 支持 Bulk、Interrupt、Isochronous 管道数据传输
+- 提供数据回环测试、速度测试等功能
+- 支持多种 Windows 平台和架构（Win7/Win8/Win8.1，x86/x64）
 
-## Add Picture
-![Add my picture](https://www.baidu.com/img/bd_logo1.png)
+## 构建方法
 
-## Add Table
+1. 安装 Visual Studio 2013 或更高版本，确保已安装 Windows Driver Kit (WDK)。
+2. 打开 `USBApp.sln` 解决方案。
+3. 选择合适的配置（如 Win7 Debug/x64），编译并运行。
 
-Table title 1  |  table title 2  |  table title 3
----- | ---- | ----
-1.23  |  2.34  |  3.45
-4.56  |  5.67  |  6.78
+## 使用方法
 
-## Add Link
-[How to write Readme.me](https://blog.csdn.net/Strive_For_Future/article/details/120956016)
+1. 安装 WinUSB 驱动（需根据设备硬件 ID 修改并安装 `USBApp.inf`）。
+2. 运行编译后的程序，按提示选择测试用例和管道类型。
+3. 查看控制台输出，进行 USB 通信测试。
 
+## 参考资料
+
+- [WinUSB 官方文档](https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/winusb)
+- [WinUSB MSDN](http://msdn.microsoft.com/library/windows/hardware/ff540196.aspx)
+
+## License
+
+MIT License
