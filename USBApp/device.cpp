@@ -3,9 +3,9 @@
 #include <SetupAPI.h>
 
 
-DEFINE_GUID(GUID_DEVINTERFACE_SMIUSBDISPLAY, 0x28adfe0f, 0x3d1b, 0x4c2f, 0xa0, 0x61, 0x1e, 0x1e, 0x87, 0xab, 0xe2, 0xac);
+DEFINE_GUID(GUID_DEVINTERFACE_USBDISPLAY, 0x7c3e9a12, 0x5b2f, 0x4e8a, 0xb2, 0x17, 0x4c, 0x9d, 0x3f, 0x6a, 0x8e, 0x1c);
 
-DEFINE_GUID(GUID_DEVINTERFACE_SMIUSBDISPLAY2, 0x49feebbb, 0xec85, 0x47d9, 0xa5, 0x34, 0x6d, 0x51, 0x85, 0xa7, 0x5d, 0xf8);
+DEFINE_GUID(GUID_DEVINTERFACE_USBDISPLAY2, 0x2a6d4c8e, 0x1f3b, 0x4c7d, 0x9e, 0x23, 0x7b, 0x5a, 0x2c, 0x4d, 0x6f, 0x9b);
 
 
 HANDLE OpenOneDevice(_In_ HDEVINFO HardwareDeviceInfo, _In_ PSP_DEVICE_INTERFACE_DATA DeviceInfoData, _In_ STRSAFE_LPSTR devName);
@@ -27,15 +27,13 @@ HANDLE NewDevAdd()
     tempDevDesc = NULL;
     NumberDevices = 0;
 
-    //SMIFalconDeviceVector.clear();
-
     //
     // Open a handle to the plug and play dev node.
     // SetupDiGetClassDevs() returns a device information set that contains 
     // info on all installed devices of a specified class.
     //
     hardwareDeviceInfo =
-        SetupDiGetClassDevs(&GUID_DEVINTERFACE_SMIUSBDISPLAY,
+        SetupDiGetClassDevs(&GUID_DEVINTERFACE_USBDISPLAY,
         NULL, // Define no enumerator (global)
         NULL, // Define no
         (DIGCF_PRESENT |           // Only Devices present
@@ -68,7 +66,7 @@ HANDLE NewDevAdd()
             // by one or more devices.
             if (SetupDiEnumDeviceInterfaces(hardwareDeviceInfo,
                 0, // We don't care about specific PDOs
-                &GUID_DEVINTERFACE_SMIUSBDISPLAY,
+                &GUID_DEVINTERFACE_USBDISPLAY,
                 i,
                 &deviceInfoData))
             {
@@ -115,15 +113,13 @@ HANDLE NewDevAdd2()
     tempDevDesc = NULL;
     NumberDevices = 0;
 
-    //SMIFalconDeviceVector.clear();
-
     //
     // Open a handle to the plug and play dev node.
     // SetupDiGetClassDevs() returns a device information set that contains 
     // info on all installed devices of a specified class.
     //
     hardwareDeviceInfo =
-        SetupDiGetClassDevs(&GUID_DEVINTERFACE_SMIUSBDISPLAY2,
+        SetupDiGetClassDevs(&GUID_DEVINTERFACE_USBDISPLAY2,
             NULL, // Define no enumerator (global)
             NULL, // Define no
             (DIGCF_PRESENT |           // Only Devices present
@@ -156,7 +152,7 @@ HANDLE NewDevAdd2()
             // by one or more devices.
             if (SetupDiEnumDeviceInterfaces(hardwareDeviceInfo,
                 0, // We don't care about specific PDOs
-                &GUID_DEVINTERFACE_SMIUSBDISPLAY2,
+                &GUID_DEVINTERFACE_USBDISPLAY2,
                 i,
                 &deviceInfoData))
             {
@@ -537,3 +533,4 @@ Return value:
 
     return hr;
 }
+
