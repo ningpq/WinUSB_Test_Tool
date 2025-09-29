@@ -823,7 +823,7 @@ Routine description:
         hDev = NewDevAdd2();
         if (hDev == NULL)
         {
-            printf("Fail: Can't find falconUSB\n");
+            printf("Fail: Can't find USB device\n");
             system("Pause");
             return 0;
         }
@@ -995,4 +995,5 @@ Routine description:
     return 0;
 
 }
+
 
